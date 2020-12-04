@@ -1,7 +1,7 @@
 {
   "name": "sassy-components",
   "sideEffects": "false",
-  "version": "0.0.1",
+  "version": "0.1.6",
   "description": "A react ui components library inspired from shoelace",
   "license": "MIT",
   "author": {
@@ -31,12 +31,13 @@
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "format": "prettier --write src"
   },
   "peerDependencies": {
+    "bootstrap-icons": ">=1.0.0",
     "react": ">=16.8",
-    "styled-components": ">=3.0",
-    "bootstrap-icons": ">=1.0.0"
+    "styled-components": ">=3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -52,7 +53,9 @@
     "@types/styled-components": "^5.1.4",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
+    "commitizen": "^4.2.2",
     "husky": "^4.3.0",
+    "prettier": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
@@ -64,7 +67,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "yarn format && tsdx lint"
     }
   },
   "size-limit": [
@@ -78,6 +81,7 @@
     }
   ],
   "dependencies": {
-    "bootstrap-icons": "^1.0.0"
+    "bootstrap-icons": "^1.0.0",
+    "styled-components": "^5.2.0"
   }
 }
