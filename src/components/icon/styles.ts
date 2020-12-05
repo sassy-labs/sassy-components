@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const StyledIcon = styled.div<{
+export const StyledIcon = styled.svg<{
   width?: string;
   height?: string;
   color?: string;
@@ -14,10 +14,4 @@ export const StyledIcon = styled.div<{
     height: ${height};
     color: ${color};
   `}
-`;
-
-export const Svg = styled.svg`
-  display: block;
-  height: 100%;
-  width: 100%;
 `;

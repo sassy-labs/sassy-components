@@ -17,16 +17,16 @@ export const StyledIconButton = styled.button`
     transition: color ${sassy.transitionMedium};
 
     ${!disabled &&
-      css`
-        &:hover,
-        &:focus {
-          color: ${sassy.colors.primary[50]};
-        }
+    css`
+      &:hover,
+      &:focus {
+        color: ${sassy.colors.primary[50]};
+      }
 
-        &:active {
-          color: ${sassy.colors.primary[40]};
-        }
-      `}
+      &:active {
+        color: ${sassy.colors.primary[40]};
+      }
+    `}
   `}
 
   &:focus {

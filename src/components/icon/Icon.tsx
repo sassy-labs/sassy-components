@@ -1,6 +1,6 @@
 import React from 'react';
-const icons = require('./bootstrap-icons.svg') as string;
-import { StyledIcon, Svg } from './styles';
+import icons from './bootstrap-icons.svg';
+import { StyledIcon } from './styles';
 
 export interface Props extends React.HTMLAttributes<HTMLOrSVGElement> {
   name?: string;
@@ -17,7 +17,7 @@ export const Icon: React.FC<Props> = ({
   height = '1em',
   color = 'currentColor',
   src,
-  label = `${name?.replaceAll(/\-/g, ' ')} icon`,
+  label = `${name?.replaceAll(/-/g, ' ')} icon`,
   ...otherProps
 }) => {
   if (!name && !src)
@@ -31,9 +31,7 @@ export const Icon: React.FC<Props> = ({
       aria-label={label}
       {...otherProps}
     >
-      <Svg>
-        {src ? <use href={src} /> : <use href={`./${icons}#${name}`} />}
-      </Svg>
+      {src ? <use href={src} /> : <use href={`./${icons}#${name}`} />}
     </StyledIcon>
   );
 };
