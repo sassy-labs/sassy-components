@@ -1,10 +1,12 @@
+import { Icon } from './../icon/Icon';
 import styled, { css } from 'styled-components';
 import { Variant } from '../../util/Variant.type';
 
-export const AlertIcon = styled.span`
+export const AlertIcon = styled(Icon)`
   flex: 0 0 auto;
   display: flex;
   align-items: center;
+  margin: auto;
   ${({ theme: { sassy } }) => css`
     font-size: ${sassy.fontSizeLarge};
     margin-left: ${sassy.spacingLarge};
@@ -29,7 +31,7 @@ export const AlertClose = styled.span`
   `}
 `;
 
-export const StyledAlert = styled.div<{ variant: Variant }>`
+export const StyledAlert = styled.div<{ variant?: Variant }>`
   position: relative;
   display: flex;
   align-items: stretch;
@@ -37,7 +39,7 @@ export const StyledAlert = styled.div<{ variant: Variant }>`
   line-height: 1.6;
   opacity: 0;
   transform: scale(0.9);
-  ${({ theme: { sassy }, hidden, variant }) => {
+  ${({ theme: { sassy }, hidden, variant = 'primary' }) => {
     if (!sassy)
       throw new Error(
         'Please mount the sassy theme provider at a higher place in the component tree'
