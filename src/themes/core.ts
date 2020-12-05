@@ -9,8 +9,8 @@ const ColorTokens = {
     danger: generatePalette(10, 95),
     gray: generatePalette(203, 10),
     white: `white`,
-    black: `black`
-  }
+    black: `black`,
+  },
 };
 
 const BorderRadiusTokens = {
@@ -19,7 +19,7 @@ const BorderRadiusTokens = {
   borderRadiusLarge: `0.5rem`,
   borderRadiusXLarge: `1rem`,
   borderRadiusCircle: `50%`,
-  borderRadiusPill: `9999px`
+  borderRadiusPill: `9999px`,
 };
 
 const ElevationTokens = {
@@ -27,7 +27,7 @@ const ElevationTokens = {
   shadowSmall: `0 1px 2px rgba(0, 0, 0, 0.1)`,
   shadowMedium: `0 2px 4px rgba(0, 0, 0, 0.1)`,
   shadowLarge: `0 2px 8px rgba(0, 0, 0, 0.1)`,
-  shadowXLarge: `0 4px 16px rgba(0, 0, 0, 0.1)`
+  shadowXLarge: `0 4px 16px rgba(0, 0, 0, 0.1)`,
 };
 
 const SpacingTokens = {
@@ -40,7 +40,7 @@ const SpacingTokens = {
   spacingXLarge: `1.75rem`,
   spacingXXLarge: `2.25rem`,
   spacingXXXLarge: `3rem `,
-  spacingXXXXLarge: `4.5rem`
+  spacingXXXXLarge: `4.5rem`,
 };
 
 const TransitionTokens = {
@@ -48,7 +48,7 @@ const TransitionTokens = {
   transitionSlow: `500ms`,
   transitionMedium: `250ms`,
   transitionFast: `150ms`,
-  transitionXFast: `50ms`
+  transitionXFast: `50ms`,
 };
 
 const TypographyTokens = {
@@ -78,7 +78,7 @@ const TypographyTokens = {
   // line heights
   lineHeightDense: `1.4`,
   lineHeightNormal: `1.8`,
-  lineHeightLoose: `2.2`
+  lineHeightLoose: `2.2`,
 };
 
 export default {
@@ -87,5 +87,5 @@ export default {
   ...BorderRadiusTokens,
   ...ElevationTokens,
   ...SpacingTokens,
-  ...TypographyTokens
+  ...TypographyTokens,
 };

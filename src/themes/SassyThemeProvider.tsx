@@ -18,22 +18,22 @@ export interface makeSassyChildInterface
 
 export const makeSassy = (Child: makeSassyChildInterface) => ({ ...props }) => (
   <SassyContext.Consumer>
-    {value => <Child theme={value} {...props} />}
+    {(value) => <Child theme={value} {...props} />}
   </SassyContext.Consumer>
 );
 
 export const SassyThemeProvider: React.FC<SassyThemeProviderProps> = ({
   mode = 'light',
   theme,
-  children
+  children,
 }) => (
   <ThemeProvider
     theme={() => ({
       sassy: {
         ...(mode === 'light' ? LightMode : DarkMode),
         ...theme,
-        ...core
-      }
+        ...core,
+      },
     })}
   >
     {children}
