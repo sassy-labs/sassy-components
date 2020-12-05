@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from 'sassy-components';
+import { Alert } from './dist';
 import logo from './logo.svg';
 import './App.css';
 
@@ -11,8 +11,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <Alert icon="info-circle" duration={50000} isOpen variant="primary">
-          This is an alert
+        <Alert duration={50000} isOpen variant="primary">
+          <Alert.Icon name="check-circle" />
+          <Alert.Message>This is an alert</Alert.Message>
         </Alert>
       </header>
     </div>

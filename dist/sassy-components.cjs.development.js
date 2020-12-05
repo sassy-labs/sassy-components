@@ -8,6 +8,7 @@ var React = require('react');
 var React__default = _interopDefault(React);
 var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
+var icons = _interopDefault(require('bootstrap-icons/bootstrap-icons.svg'));
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -166,16 +167,6 @@ var SassyThemeProvider = function SassyThemeProvider(_ref2) {
   }, children);
 };
 
-function _templateObject3() {
-  var data = _taggedTemplateLiteralLoose(["\n  display: block;\n  height: 100%;\n  width: 100%;\n"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject2() {
   var data = _taggedTemplateLiteralLoose(["\n    width: ", ";\n    height: ", ";\n    color: ", ";\n  "]);
 
@@ -195,7 +186,7 @@ function _templateObject() {
 
   return data;
 }
-var StyledIcon = /*#__PURE__*/styled__default.div( /*#__PURE__*/_templateObject(), function (_ref) {
+var StyledIcon = /*#__PURE__*/styled__default.svg( /*#__PURE__*/_templateObject(), function (_ref) {
   var _ref$width = _ref.width,
       width = _ref$width === void 0 ? '1em' : _ref$width,
       _ref$height = _ref.height,
@@ -204,9 +195,7 @@ var StyledIcon = /*#__PURE__*/styled__default.div( /*#__PURE__*/_templateObject(
       color = _ref$color === void 0 ? 'currentColor' : _ref$color;
   return styled.css(_templateObject2(), width, height, color);
 });
-var Svg = /*#__PURE__*/styled__default.svg( /*#__PURE__*/_templateObject3());
 
-var icons = /*#__PURE__*/require('./bootstrap-icons.svg');
 var Icon = function Icon(_ref) {
   var name = _ref.name,
       _ref$width = _ref.width,
@@ -217,7 +206,7 @@ var Icon = function Icon(_ref) {
       color = _ref$color === void 0 ? 'currentColor' : _ref$color,
       src = _ref.src,
       _ref$label = _ref.label,
-      label = _ref$label === void 0 ? (name == null ? void 0 : name.replaceAll(/\-/g, ' ')) + " icon" : _ref$label,
+      label = _ref$label === void 0 ? (name == null ? void 0 : name.replaceAll(/-/g, ' ')) + " icon" : _ref$label,
       otherProps = _objectWithoutPropertiesLoose(_ref, ["name", "width", "height", "color", "src", "label"]);
 
   if (!name && !src) throw new Error('At least name or src for Icon must be defined');
@@ -226,17 +215,17 @@ var Icon = function Icon(_ref) {
     height: height,
     color: color,
     "aria-label": label
-  }, otherProps), React__default.createElement(Svg, null, src ? React__default.createElement("use", {
+  }, otherProps), src ? React__default.createElement("use", {
     href: src
   }) : React__default.createElement("use", {
     href: "./" + icons + "#" + name
-  })));
+  }));
 };
 
-function _templateObject3$1() {
-  var data = _taggedTemplateLiteralLoose(["\n        &:hover,\n        &:focus {\n          color: ", ";\n        }\n\n        &:active {\n          color: ", ";\n        }\n      "]);
+function _templateObject3() {
+  var data = _taggedTemplateLiteralLoose(["\n      &:hover,\n      &:focus {\n        color: ", ";\n      }\n\n      &:active {\n        color: ", ";\n      }\n    "]);
 
-  _templateObject3$1 = function _templateObject3() {
+  _templateObject3 = function _templateObject3() {
     return data;
   };
 
@@ -265,7 +254,7 @@ function _templateObject$1() {
 var StyledIconButton = /*#__PURE__*/styled__default.button( /*#__PURE__*/_templateObject$1(), function (_ref) {
   var sassy = _ref.theme.sassy,
       disabled = _ref.disabled;
-  return styled.css(_templateObject2$1(), sassy.borderRadiusMedium, sassy.colors.gray[50], sassy.spacingXSmall, sassy.transitionMedium, !disabled && styled.css(_templateObject3$1(), sassy.colors.primary[50], sassy.colors.primary[40]));
+  return styled.css(_templateObject2$1(), sassy.borderRadiusMedium, sassy.colors.gray[50], sassy.spacingXSmall, sassy.transitionMedium, !disabled && styled.css(_templateObject3(), sassy.colors.primary[50], sassy.colors.primary[40]));
 });
 
 var IconButton = function IconButton(_ref) {
@@ -339,10 +328,10 @@ function _templateObject4() {
   return data;
 }
 
-function _templateObject3$2() {
+function _templateObject3$1() {
   var data = _taggedTemplateLiteralLoose(["\n  flex: 1 1 auto;\n  overflow: hidden;\n  ", "\n"]);
 
-  _templateObject3$2 = function _templateObject3() {
+  _templateObject3$1 = function _templateObject3() {
     return data;
   };
 
@@ -360,7 +349,7 @@ function _templateObject2$2() {
 }
 
 function _templateObject$2() {
-  var data = _taggedTemplateLiteralLoose(["\n  flex: 0 0 auto;\n  display: flex;\n  align-items: center;\n  ", "\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  flex: 0 0 auto;\n  display: flex;\n  align-items: center;\n  margin: auto;\n  ", "\n"]);
 
   _templateObject$2 = function _templateObject() {
     return data;
@@ -368,11 +357,11 @@ function _templateObject$2() {
 
   return data;
 }
-var AlertIcon = /*#__PURE__*/styled__default.span( /*#__PURE__*/_templateObject$2(), function (_ref) {
+var AlertIcon = /*#__PURE__*/styled__default(Icon)( /*#__PURE__*/_templateObject$2(), function (_ref) {
   var sassy = _ref.theme.sassy;
   return styled.css(_templateObject2$2(), sassy.fontSizeLarge, sassy.spacingLarge);
 });
-var AlertMessage = /*#__PURE__*/styled__default.span( /*#__PURE__*/_templateObject3$2(), function (_ref2) {
+var AlertMessage = /*#__PURE__*/styled__default.span( /*#__PURE__*/_templateObject3$1(), function (_ref2) {
   var sassy = _ref2.theme.sassy;
   return styled.css(_templateObject4(), sassy.spacingLarge);
 });
@@ -383,23 +372,27 @@ var AlertClose = /*#__PURE__*/styled__default.span( /*#__PURE__*/_templateObject
 var StyledAlert = /*#__PURE__*/styled__default.div( /*#__PURE__*/_templateObject7(), function (_ref4) {
   var sassy = _ref4.theme.sassy,
       hidden = _ref4.hidden,
-      variant = _ref4.variant;
+      _ref4$variant = _ref4.variant,
+      variant = _ref4$variant === void 0 ? 'primary' : _ref4$variant;
   if (!sassy) throw new Error('Please mount the sassy theme provider at a higher place in the component tree');
   return styled.css(_templateObject8(), sassy.colors.white, sassy.colors.gray[90], sassy.borderRadiusMedium, sassy.fontSans, sassy.fontSizeSmall, sassy.fontWeightNormal, sassy.colors.gray[30], sassy.transitionMedium, sassy.transitionMedium, sassy.colors[variant][50], AlertIcon, sassy.colors[variant][50], !hidden && "opacity: 1; transform: scale(1);");
 });
 
-var Alert = function Alert(_ref) {
-  var _ref$isOpen = _ref.isOpen,
-      isOpen = _ref$isOpen === void 0 ? true : _ref$isOpen,
-      _ref$isClosable = _ref.isClosable,
-      isClosable = _ref$isClosable === void 0 ? true : _ref$isClosable,
-      _ref$variant = _ref.variant,
-      variant = _ref$variant === void 0 ? 'primary' : _ref$variant,
-      _ref$duration = _ref.duration,
-      duration = _ref$duration === void 0 ? 5000 : _ref$duration,
-      icon = _ref.icon,
-      children = _ref.children,
-      otherProps = _objectWithoutPropertiesLoose(_ref, ["isOpen", "isClosable", "variant", "duration", "icon", "children"]);
+var defaultProps = {
+  isOpen: true,
+  isClosable: true,
+  variant: 'primary',
+  duration: 5000
+};
+var Alert = /*#__PURE__*/React__default.forwardRef(function (props, ref) {
+  var isOpen = props.isOpen,
+      isClosable = props.isClosable,
+      variant = props.variant,
+      duration = props.duration,
+      children = props.children,
+      onClose = props.onClose,
+      onShow = props.onShow,
+      otherProps = _objectWithoutPropertiesLoose(props, ["isOpen", "isClosable", "variant", "duration", "children", "onClose", "onShow"]);
 
   var _useState = React.useState(),
       autoHideTimeout = _useState[0],
@@ -412,6 +405,7 @@ var Alert = function Alert(_ref) {
   var hide = function hide() {
     setIsShowing(false);
     clearTimeout(autoHideTimeout);
+    onClose && onClose();
   };
 
   var restartAutoHide = function restartAutoHide() {
@@ -423,6 +417,7 @@ var Alert = function Alert(_ref) {
     if (isOpen) {
       restartAutoHide();
       setIsShowing(true);
+      onShow && onShow();
     }
   };
 
@@ -432,8 +427,8 @@ var Alert = function Alert(_ref) {
       return clearTimeout(autoHideTimeout);
     };
   }, []);
-  if (!isOpen) return null;
   return React__default.createElement(StyledAlert, Object.assign({
+    ref: ref,
     variant: variant,
     hidden: !isShowing,
     role: "alert",
@@ -441,14 +436,18 @@ var Alert = function Alert(_ref) {
     "aria-atomic": "true",
     "aria-hidden": !isShowing,
     onMouseMove: restartAutoHide
-  }, otherProps), icon && React__default.createElement(AlertIcon, null, React__default.createElement(Icon, {
-    name: icon
-  })), React__default.createElement(AlertMessage, null, children), isClosable && React__default.createElement(AlertClose, {
+  }, otherProps), children, isClosable && React__default.createElement(AlertClose, {
     onClick: hide
   }, React__default.createElement(IconButton, {
     name: "x"
   })));
-};
+});
+AlertIcon.displayName = 'Alert.Icon';
+AlertMessage.displayName = 'Alert.Message';
+Alert.displayName = 'Alert';
+Alert.defaultProps = defaultProps;
+Alert.Icon = AlertIcon;
+Alert.Message = AlertMessage;
 
 exports.Alert = Alert;
 exports.Icon = Icon;
