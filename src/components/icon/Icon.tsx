@@ -1,5 +1,5 @@
 import React from 'react';
-import icons from './bootstrap-icons.svg';
+import icons from 'bootstrap-icons/bootstrap-icons.svg';
 import { StyledIcon } from './styles';
 
 export interface Props extends React.HTMLAttributes<HTMLOrSVGElement> {
