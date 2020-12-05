@@ -1,71 +1,78 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import { Alert, Props } from '../src/components/alert';
-import { Icon } from '../src/components/icon';
+import { Meta } from '@storybook/react';
+import { Alert, Props } from '../src/components/alert/Alert';
 
 const meta: Meta = {
   title: 'Alert',
   component: Alert,
-  parameters: {
-    controls: { expanded: true }
-  }
+  argTypes: {
+    isOpen: {
+      control: {
+        type: 'boolean',
+      },
+    },
+    isClosable: {
+      control: {
+        type: 'boolean',
+      },
+    },
+    variant: {
+      control: {
+        type: 'string',
+        options: ['primary', 'success', 'info', 'warning', 'danger', 'gray'],
+      },
+    },
+    duration: {
+      control: {
+        type: 'number',
+      },
+    },
+  },
 };
 
 export default meta;
 
-const Template: Story<Props> = args => <Alert {...args} />;
+export const Primary: React.FC<Props> = () => (
+  <Alert variant="primary">
+    <Alert.Icon name="info-circle" />
+    <Alert.Message>
+      <p>Primary</p>
+    </Alert.Message>
+  </Alert>
+);
 
-export const Primary = Template.bind({});
+export const Success: React.FC<Props> = () => (
+  <Alert variant="success">
+    <Alert.Icon name="check2-circle" />
+    <Alert.Message>
+      <p>Success</p>
+    </Alert.Message>
+  </Alert>
+);
 
-Primary.args = {
-  children: <p>Hello</p>,
-  variant: 'primary',
-  duration: 30000,
-  isOpen: true,
-  isClosable: true,
-  icon: <Icon name="gear" />
-};
+export const Info: React.FC<Props> = () => (
+  <Alert variant="info">
+    <Alert.Icon name="info-circle" />
+    <Alert.Message>
+      <p>Info</p>
+    </Alert.Message>
+  </Alert>
+);
 
-export const Success = Template.bind({});
+export const Warning: React.FC<Props> = () => (
+  <Alert variant="warning">
+    <Alert.Icon name="exclamation-triangle" />
+    <Alert.Message>
+      <p>Warning</p>
+    </Alert.Message>
+  </Alert>
+);
 
-Success.args = {
-  children: <p>Success</p>,
-  variant: 'success',
-  duration: 30000,
-  isOpen: true,
-  isClosable: true,
-  icon: <Icon name="check2-circle" />
-};
-
-export const Info = Template.bind({});
-
-Info.args = {
-  children: <p>Info</p>,
-  variant: 'info',
-  duration: 30000,
-  isOpen: true,
-  isClosable: true,
-  icon: <Icon name="gear" />
-};
-
-export const Warning = Template.bind({});
-
-Warning.args = {
-  children: <p>Warning</p>,
-  variant: 'warning',
-  duration: 30000,
-  isOpen: true,
-  isClosable: true,
-  icon: <Icon name="exclamation-triangle" />
-};
-
-export const Danger = Template.bind({});
-
-Danger.args = {
-  children: <p>Danger</p>,
-  variant: 'danger',
-  duration: 30000,
-  isOpen: true,
-  isClosable: true,
-  icon: <Icon name="exclamation-octagon" />
-};
+export const Danger: React.FC<Props> = () => (
+  <Alert variant="danger">
+    <Alert.Icon name="exclamation-octagon" />
+    <Alert.Message>
+      <p>Danger</p>
+    </Alert.Message>
+  </Alert>
+);
