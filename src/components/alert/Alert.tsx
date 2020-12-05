@@ -4,31 +4,48 @@ import { IconButton } from '../iconButton/IconButton';
 
 import { Variant } from '../../util/Variant.type';
 import { StyledAlert, AlertIcon, AlertMessage, AlertClose } from './styles';
+import { StyledComponent } from 'styled-components';
 
 export interface Props extends React.HTMLAttributes<HTMLDivElement> {
   isOpen?: boolean;
   isClosable?: boolean;
   variant?: Variant;
   duration?: number;
-  children?: React.ReactChild;
-  icon?: string;
+  onClose?: () => {};
+  onShow?: () => {};
 }
 
-export const Alert: React.FC<Props> = ({
-  isOpen = true,
-  isClosable = true,
-  variant = 'primary',
-  duration = 5000,
-  icon,
-  children,
-  ...otherProps
-}) => {
+const defaultProps: Props = {
+  isOpen: true,
+  isClosable: true,
+  variant: 'primary',
+  duration: 5000,
+};
+
+type Alert = React.ForwardRefExoticComponent<Props> & {
+  Icon: StyledComponent<typeof Icon, any, {}, never>;
+  Message: StyledComponent<React.FC, any, {}, never>;
+};
+
+const Alert = (React.forwardRef<HTMLDivElement, Props>((props: Props, ref) => {
+  const {
+    isOpen,
+    isClosable,
+    variant,
+    duration,
+    children,
+    onClose,
+    onShow,
+    ...otherProps
+  } = props;
+
   const [autoHideTimeout, setAutoHideTimeout] = useState<number>();
   const [isShowing, setIsShowing] = useState<boolean>(false);
 
   const hide = (): void => {
     setIsShowing(false);
     clearTimeout(autoHideTimeout);
+    onClose && onClose();
   };
 
   const restartAutoHide = (): void => {
@@ -40,6 +57,7 @@ export const Alert: React.FC<Props> = ({
     if (isOpen) {
       restartAutoHide();
       setIsShowing(true);
+      onShow && onShow();
     }
   };
 
@@ -48,10 +66,9 @@ export const Alert: React.FC<Props> = ({
     return () => clearTimeout(autoHideTimeout);
   }, []);
 
-  if (!isOpen) return null;
-
   return (
     <StyledAlert
+      ref={ref}
       variant={variant}
       hidden={!isShowing}
       role="alert"
@@ -61,13 +78,7 @@ export const Alert: React.FC<Props> = ({
       onMouseMove={restartAutoHide}
       {...otherProps}
     >
-      {icon && (
-        <AlertIcon>
-          <Icon name={icon} />
-        </AlertIcon>
-      )}
-
-      <AlertMessage>{children}</AlertMessage>
+      {children}
 
       {isClosable && (
         <AlertClose onClick={hide}>
@@ -76,4 +87,14 @@ export const Alert: React.FC<Props> = ({
       )}
     </StyledAlert>
   );
-};
+}) as unknown) as Alert;
+
+AlertIcon.displayName = 'Alert.Icon';
+AlertMessage.displayName = 'Alert.Message';
+
+Alert.displayName = 'Alert';
+Alert.defaultProps = defaultProps;
+Alert.Icon = AlertIcon;
+Alert.Message = AlertMessage;
+
+export { Alert };
